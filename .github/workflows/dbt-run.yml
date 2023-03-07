@@ -51,7 +51,7 @@ jobs:
         run: |
           dbt run --target ${{ inputs.target }} --profiles-dir .
         env:
-          GOOGLE_APPLICATION_CREDENTIALS:  ./dbt-service-account.json
+          GOOGLE_APPLICATION_CREDENTIALS:  ./dbt/dbt-service-account.json
 
       - name: Create and send Elementary report
         working-directory: ./dbt
