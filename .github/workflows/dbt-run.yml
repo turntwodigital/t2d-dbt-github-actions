@@ -39,27 +39,18 @@ jobs:
         working-directory: ./dbt
         run: |
           pip install dbt-bigquery
-        env:
-          DBT_PROFILES_DIR: ./dbt
 
       - name: Install dbt packages
         working-directory: ./dbt
         run: |
           dbt deps --target prod
-        env:
-          DBT_PROFILES_DIR: ./dbt
       
-      # Add dbt seed or other commands here if needed
       - name: Run dbt models
         working-directory: ./dbt
         run: |
-          dbt run --target ${{ inputs.target }}
-        env:
-          DBT_PROFILES_DIR: ./dbt
+          dbt run --target ${{ inputs.target }} --profiles-dir .
 
       - name: Test dbt models
-        working-directory: ./dbt
+        working-directory: .
         run: |
-          dbt test --target ${{ inputs.target }}
-        env:
-          DBT_PROFILES_DIR: ./dbt
+          dbt test --target ${{ inputs.target }} --profiles-dir .
