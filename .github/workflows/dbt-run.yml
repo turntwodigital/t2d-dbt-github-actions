@@ -6,6 +6,9 @@ on:
       target:
         required: true
         type: string
+      full_refresh:
+        required: false
+        type: boolean
     secrets:
       GCP_SERVICE_ACCOUNT_KEY:
         required: true
