@@ -49,8 +49,12 @@ jobs:
         working-directory: ./dbt
         run: |
           dbt run --target ${{ inputs.target }} --profiles-dir .
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS:  ./dbt-service-account.json
 
       - name: Test dbt models
         working-directory: .
         run: |
           dbt test --target ${{ inputs.target }} --profiles-dir .
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS:  ./dbt-service-account.json
