@@ -39,6 +39,8 @@ jobs:
         run: |
           pip install dbt-bigquery
           dbt deps --target prod
+        env:
+          DBT_PROFILES_DIR: ./dbt
       
       # Add dbt seed or other commands here if needed
       - name: Run dbt models
