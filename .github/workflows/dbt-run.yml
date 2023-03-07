@@ -30,7 +30,7 @@ jobs:
         uses: xom9ikk/dotenv@v2
 
       - name: Authenticate using service account
-        run: 'echo "$GCP_SERVICE_ACCOUNT_KEY" > ./dbt-service-account.json'
+        run: 'echo "$GCP_SERVICE_ACCOUNT_KEY" > ./dbt/dbt-service-account.json'
         shell: bash
         env:
           GCP_SERVICE_ACCOUNT_KEY: ${{secrets.GCP_SERVICE_ACCOUNT_KEY}}
