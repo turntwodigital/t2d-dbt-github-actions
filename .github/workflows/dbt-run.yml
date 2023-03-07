@@ -38,7 +38,8 @@ jobs:
       - name: Install dbt
         working-directory: ./dbt
         run: |
-          pip install dbt-bigquery
+          pip install dbt-bigquery==1.4.1
+          pip install elementary-data[bigquery]==0.7.5
 
       - name: Install dbt packages
         working-directory: ./dbt
@@ -51,6 +52,11 @@ jobs:
           dbt run --target ${{ inputs.target }} --profiles-dir .
         env:
           GOOGLE_APPLICATION_CREDENTIALS:  ./dbt-service-account.json
+
+      - name: Create and send Elementary report
+        working-directory: ./dbt
+        run: |
+          edr send-report --google-service-account-path ./dbt-service-account.json --gcs-bucket-name t2d-elementary
 
       - name: Test dbt models
         working-directory: .
