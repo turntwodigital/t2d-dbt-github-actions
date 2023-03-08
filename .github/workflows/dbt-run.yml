@@ -57,7 +57,7 @@ jobs:
         working-directory: ./dbt
         run: |
           edr send-report --google-service-account-path ./dbt-service-account.json --gcs-bucket-name t2d-elementary --update-bucket-website true
-         env:
+        env:
           GOOGLE_APPLICATION_CREDENTIALS:  ./dbt-service-account.json
 
       - name: Test dbt models
