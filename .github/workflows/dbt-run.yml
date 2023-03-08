@@ -56,7 +56,7 @@ jobs:
       - name: Create and send Elementary report
         working-directory: ./dbt
         run: |
-          edr send-report --google-service-account-path ./dbt-service-account.json --gcs-bucket-name t2d-elementary --update-bucket-website true
+          edr send-report --gcs-bucket-name t2d-elementary --update-bucket-website true
         env:
           GOOGLE_APPLICATION_CREDENTIALS:  ./dbt-service-account.json
 
